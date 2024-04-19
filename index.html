@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./assets/Apps/windows11.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Windows 11</title>
+  </head>
+  <body class="h-screen w-screen overflow-hidden">
+    <!-- Windows Task Bar -->
+    <div
+      class="flex flex-row w-screen backdrop-blur-xl bg-black-dark-transparent absolute bottom-0 justify-between py-1 z-50 select-none"
+    >
+      <div
+        id="weatherpress"
+        class="flex flex-row items-center hover:bg-white-transparent ml-3 rounded py-0.5 select-none duration-500"
+      >
+        <!-- <img class="h-6 w-6" src="./assets/Apps/widget.png" alt=""> -->
+        <!-- <div class="pl-3 pr-2">
+          <img src="./assets/Weather/1163626.png" alt="" class="h-6 w-6" />
+        </div>
+        <div class="flex flex-col">
+          <p class="text-white text-[0.8rem]">23&#176;C</p>
+          <p class="text-white text-[0.75rem]">Thunder Storms</p>
+        </div> -->
+      </div>
+      <div
+        id="taskbar-icons"
+        class="flex flex-row items-center space-x-2 ml-36"
+      ></div>
+      <div class="flex flex-row items-center text-white mr-2 select-none">
+        <div
+          id="appshow"
+          class="py-2.5 hover:bg-white-transparent duration-500"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M5 15l7-7 7 7"
+            />
+          </svg>
+        </div>
+        <div
+          id="keyeng"
+          class="flex flex-col rounded px-3 py-0.5 hover:bg-white-transparent duration-500"
+        >
+          <p class="text-[0.75rem]">ENG</p>
+          <p class="text-[0.75rem]">INTL</p>
+        </div>
+        <div
+          id="wvb"
+          class="flex flex-row hover:bg-white-transparent rounded py-3 duration-500"
+        >
+          <img src="./assets/Icons/wifi.png" alt="" class="h-4 px-1.5" />
+          <img src="./assets/Icons/vloume.png" alt="" class="h-4 px-1.5" />
+          <img
+            src="./assets/Icons/full-battery.png"
+            alt=""
+            class="h-4 px-1.5"
+          />
+        </div>
+        <div
+          id="notific"
+          class="flex flex-col text-right pl-2 pr-2 py-0.5 hover:bg-white-transparent rounded duration-500"
+        >
+          <p id="time" class="text-[0.75rem]">12:00 AM</p>
+          <p id="date" class="text-[0.75rem]">Jun 15 2022</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Windows Menu Action -->
+    <div
+      id="menu"
+      class="bottom-[-40rem] ease-in-out duration-200 backdrop-blur-lg bg-white-transparent absolute left-0 right-0 max-w-xl max-h-screen mx-auto rounded-xl justify-center select-none drop-shadow-2xl"
+    >
+      <div class="pt-6 mx-6">
+        <input
+          class="px-5 py-1.5 text-white bg-zinc-800 w-full border-b-[3px] border-blue-400 rounded outline-none"
+          type="text"
+          placeholder="Type here to search"
+        />
+      </div>
+      <div class="mx-6 mt-4 justify-between flex flex-row text-white">
+        <div class="font-semibold tracking-tight mx-5">Pinned</div>
+        <div
+          class="flex flex-row items-center bg-white-transparent hover:bg-slate-400 duration-500 pl-2 rounded mx-5"
+        >
+          <p class="text-[0.8rem]">All apps</p>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 text-white"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </div>
+      </div>
+      <div
+        id="pinned-icons"
+        class="grid grid-cols-6 text-center mx-4 mt-3 text-white items-center"
+      ></div>
+      <div class="mx-6 my-1 justify-between flex flex-row text-white">
+        <div class="font-semibold tracking-tight mx-5">Recommended</div>
+        <div
+          class="flex flex-row items-center bg-white-transparent hover:bg-slate-400 duration-500 pl-2 rounded mx-5"
+        >
+          <p class="text-[0.8rem]">More</p>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 text-white"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </div>
+      </div>
+      <div
+        id="recommended-icons"
+        class="grid mt-4 grid-cols-2 mx-10 gap-x-5 items-center"
+      >
+        <div
+          class="flex flex-row py-2 px-2 hover:bg-black-dark-transparent rounded duration-500"
+        >
+          <img class="h-8 w-8" src="./assets/Apps/vscode.ico" alt="" />
+          <div class="flex flex-col leading-tight pl-4">
+            <p class="font-semibold text-[0.8rem] text-white">VS Code</p>
+            <p class="text-[0.75rem] text-slate-200">Opened Recently</p>
+          </div>
+        </div>
+        <div
+          class="flex flex-row py-2 px-2 hover:bg-black-dark-transparent rounded duration-500"
+        >
+          <img class="h-8 w-8" src="./assets/Apps/Xbox.png" alt="" />
+          <div class="flex flex-col leading-tight pl-4">
+            <p class="font-semibold text-[0.8rem] text-white">Xbox</p>
+            <p class="text-[0.75rem] text-slate-200">Play Forza Horizon</p>
+          </div>
+        </div>
+        <div
+          class="flex flex-row py-2 px-2 hover:bg-black-dark-transparent rounded duration-500"
+        >
+          <img class="h-8 w-8" src="./assets/Apps/calculator.png" alt="" />
+          <div class="flex flex-col leading-tight pl-4">
+            <p class="font-semibold text-[0.8rem] text-white">Calculator</p>
+            <p class="text-[0.75rem] text-slate-200">Calculate values</p>
+          </div>
+        </div>
+        <div
+          class="flex flex-row py-2 px-2 hover:bg-black-dark-transparent rounded duration-500"
+        >
+          <img class="h-8 w-8" src="./assets/Apps/Photos.png" alt="" />
+          <div class="flex flex-col leading-tight pl-4">
+            <p class="font-semibold text-[0.8rem] text-white">Photos</p>
+            <p class="text-[0.75rem] text-slate-200">Opened Recently</p>
+          </div>
+        </div>
+        <div
+          class="flex flex-row py-2 px-2 hover:bg-black-dark-transparent rounded duration-500"
+        >
+          <img class="h-8 w-8" src="./assets/Apps/msoffice.ico" alt="" />
+          <div class="flex flex-col leading-tight pl-4">
+            <p class="font-semibold text-[0.8rem] text-white">Office</p>
+            <p class="text-[0.75rem] text-slate-200">Opened Recently</p>
+          </div>
+        </div>
+        <div
+          class="flex flex-row py-2 px-2 hover:bg-black-dark-transparent rounded duration-500"
+        >
+          <img class="h-8 w-8" src="./assets/Apps/edge.png" alt="" />
+          <div class="flex flex-col leading-tight pl-4">
+            <p class="font-semibold text-[0.8rem] text-white">Edge</p>
+            <p class="text-[0.75rem] text-slate-200">Opened Recently</p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="w-full mt-4 bg-white-dark-transparent text-white justify-between flex flex-row rounded rounded-b-xl"
+      >
+        <div
+          class="flex flex-row items-center px-2 py-0.5 mx-6 hover:bg-white-transparent duration-500 my-2 rounded"
+        >
+          <img class="h-9 w-9" src="./assets/Apps/usericon.png" alt="" />
+          <p class="text-[0.8rem] px-2 font-semibold">Hamza</p>
+        </div>
+        <div
+          class="items-center flex flex-row mx-12 hover:bg-white-transparent duration-500 my-3 rounded px-2"
+        >
+          <img class="h-4 w-4" src="./assets/Icons/power.png" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Arrow Icon Element -->
+    <div
+      id="apps"
+      class="grid grid-cols-2 bg-black-transparent absolute -bottom-20 right-48 rounded-lg text-white"
+    >
+      <div class="p-3 hover:bg-zinc-700 duration-300">
+        <img class="h-4 w-4" src="./assets/Active/security.png" alt="" />
+      </div>
+      <div class="p-3 hover:bg-zinc-700 duration-300">
+        <img class="h-4 w-4" src="./assets/Active/nvidia.png" alt="" />
+      </div>
+      <div class="p-3 hover:bg-zinc-700 duration-300">
+        <img class="h-4 w-4" src="./assets/Active/macfee.png" alt="" />
+      </div>
+      <div class="p-3 hover:bg-zinc-700 duration-300">
+        <img class="h-4 w-4" src="./assets/Apps/spotify.png" alt="" />
+      </div>
+    </div>
+
+    <!-- Controls Element -->
+    <div
+      id="wvbmenu"
+      class="bg-white-transparent backdrop-blur-lg max-w-lg absolute bottom-16 -right-96 duration-300 ease-in-out rounded-xl items-center select-none"
+    >
+      <div
+        class="grid grid-cols-3 items-center justify-center mt-10 mx-6 gap-x-1 gap-y-4 text-white"
+      >
+        <div class="flex flex-col items-center">
+          <div class="bg-sky-400 duration-500 px-10 py-4 rounded-md">
+            <img class="h-4 w-4" src="./assets/Icons/wifi.png" alt="" />
+          </div>
+          <p class="text-[0.75rem] p-2">Wifi</p>
+        </div>
+        <div class="flex flex-col items-center">
+          <div
+            class="bg-white-transparent hover:bg-sky-600 duration-500 px-10 py-4 rounded-md"
+          >
+            <img class="h-4 w-4" src="./assets/Icons/bluetooth.png" alt="" />
+          </div>
+          <p class="text-[0.75rem] p-2">Bluetooth</p>
+        </div>
+        <div class="flex flex-col items-center">
+          <div
+            class="bg-white-transparent hover:bg-sky-600 duration-500 px-10 py-4 rounded-md"
+          >
+            <img class="h-4 w-4" src="./assets/Icons/flight.png" alt="" />
+          </div>
+          <p class="text-[0.75rem] p-2">Flight mode</p>
+        </div>
+        <div class="flex flex-col items-center">
+          <div
+            class="bg-white-transparent hover:bg-sky-600 duration-500 px-10 py-4 rounded-md"
+          >
+            <img class="h-4 w-4" src="./assets/Icons/keyboard.png" alt="" />
+          </div>
+          <p class="text-[0.75rem] p-2">Keyboard layout</p>
+        </div>
+        <!-- <div class="flex flex-col items-center"><div clbg-ass="white-transparent hover:bg-sky-600 duration-500 px-10 py-4 rounded-md"><img class="h-4 w-4" src="./assets/Icons/settingsinco.png" alt=""></div><p class="text-[0.75rem] p-2">Settings</p></div> -->
+        <div class="flex flex-col items-center">
+          <div
+            class="bg-white-transparent hover:bg-sky-600 duration-500 px-10 py-4 rounded-md"
+          >
+            <img class="h-4 w-4" src="./assets/Icons/focus.png" alt="" />
+          </div>
+          <p class="text-[0.75rem] p-2">Focus assist</p>
+        </div>
+      </div>
+      <div class="flex flex-row items-center justify-center my-5">
+        <div class="mr-4 ml-8 items-center">
+          <img class="h-4 w-5" src="./assets/Icons/vloume.png" alt="" />
+        </div>
+        <div class="w-full mr-8 items-center">
+          <input
+            class="w-full hover:bg-white slider"
+            type="range"
+            min="1"
+            max="100"
+            value="50"
+          />
+        </div>
+      </div>
+      <div class="flex flex-row items-center justify-center my-7">
+        <div class="mr-4 ml-8 items-center">
+          <img class="h-4 w-5" src="./assets/Icons/brightness.png" alt="" />
+        </div>
+        <div class="w-full mr-8 items-center">
+          <input
+            class="w-full bg-black slider"
+            type="range"
+            min="1"
+            max="100"
+            value="50"
+          />
+        </div>
+      </div>
+      <div
+        class="bg-white-dark-transparent rounded-b-lg flex flex-row justify-between pl-6 pr-6 items-center"
+      >
+        <div
+          class="flex flex-row items-center my-3 hover:bg-white-transparent rounded px-2 py-1 duration-500"
+        >
+          <img class="h-4" src="./assets/Icons/full-battery.png" alt="" />
+          <p id="batteryper" class="text-white text-[0.8rem] pl-1">100%</p>
+        </div>
+        <div class="flex flex-row px-1">
+          <div
+            class="mr-4 rounded-lg duration-500 hover:bg-white-transparent p-2"
+          >
+            <img class="h-4" src="./assets/Icons/pen.png" alt="" />
+          </div>
+          <div class="hover:bg-white-transparent p-2 rounded-lg duration-500">
+            <img class="h-4" src="./assets/Icons/settingsinco.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Left API Element -->
+    <div
+      id="leftapi"
+      class="text-white overflow-hidden ease-in-out duration-300 bg-white-transparent backdrop-blur-lg w-2/5 max-h-[90vh] absolute bottom-14 select-none left-[-40rem] rounded-xl"
+    >
+      <div class="flex flex-row flex-end justify-between items-end py-1">
+        <div></div>
+        <div id="time1" class="text-3xl ml-20">12:00</div>
+        <div
+          class="flex flex-row bg-white-transparent hover:bg-slate-600 duration-500 rounded text-center items-center my-2 mx-2"
+        >
+          <div class="py-1 ml-1 px-1 duration-300 hover:bg-black-transparent">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 4v16m8-8H4"
+              />
+            </svg>
+          </div>
+          <div class="py-1 pr-2 pl-1">
+            <img class="h-8" src="./assets/Apps/usericon.png" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="mx-10 my-2">
+        <input
+          class="px-5 py-1.5 text-white bg-zinc-800 w-full border-b-[3px] border-blue-400 rounded outline-none"
+          type="text"
+          placeholder="Type here to search"
+        />
+      </div>
+      <div class="overflow-y-scroll h-[75vh] mb-10">
+        <div id="news-api" class="mx-5 grid grid-cols-2 gap-4 mt-5 mb-10"></div>
+      </div>
+    </div>
+
+    <!-- Desktop -->
+    <div
+      class="grid grid-rows-2 gap-y-2 text-white font-semibold ml-2 mt-4 select-none"
+    >
+      <div
+        class="w-24 rounded flex flex-col items-center hover:bg-white-transparent duration-300 p-1"
+      >
+        <img class="" src="./assets/Desktop/Trash.png" alt="" />
+        <p class="text-[0.8rem] text-center">Recycle Bin</p>
+      </div>
+      <div
+        class="w-24 rounded flex flex-col items-center hover:bg-white-transparent duration-300 p-1"
+      >
+        <img class="" src="./assets/Desktop/PC.png" alt="" />
+        <p class="text-[0.8rem] text-center">My Computer</p>
+      </div>
+      <div
+        class="w-24 rounded flex flex-col items-center hover:bg-white-transparent duration-300 p-1"
+      >
+        <img class="" src="./assets/Desktop/ScreenSaver.png" alt="" />
+        <p class="text-[0.8rem] text-center">Screen Saver</p>
+      </div>
+      <div
+        class="w-24 rounded flex flex-col items-center hover:bg-white-transparent duration-300 p-1"
+      >
+        <img class="" src="./assets/Desktop/Onedrive.png" alt="" />
+        <p class="text-[0.8rem] text-center">One Drive</p>
+      </div>
+      <div
+        class="w-24 rounded flex flex-col items-center hover:bg-white-transparent duration-300 p-1"
+      >
+        <img class="" src="./assets/Desktop/Contacts.png" alt="" />
+        <p class="text-[0.8rem] text-center">Contacts</p>
+      </div>
+      <div
+        class="w-24 rounded flex flex-col items-center hover:bg-white-transparent duration-300 p-1"
+      >
+        <img class="" src="./assets/Desktop/desktop.png" alt="" />
+        <p class="text-[0.8rem] text-center">Desktop</p>
+      </div>
+      <div
+        class="w-24 rounded flex flex-col items-center hover:bg-white-transparent duration-300 p-1"
+      >
+        <img class="" src="./assets/Desktop/Music.png" alt="" />
+        <p class="text-[0.8rem] text-center">Music</p>
+      </div>
+      <div
+        class="w-24 rounded flex flex-col items-center hover:bg-white-transparent duration-300 p-1"
+      >
+        <img class="" src="./assets/Desktop/Videos.png" alt="" />
+        <p class="text-[0.8rem] text-center">Videos</p>
+      </div>
+    </div>
+
+    <!-- Keyboard Layout -->
+    <div
+      id="keylayout"
+      class="text-white select-none absolute duration-300 ease-in-out backdrop-blur-lg right-3 -bottom-52 bg-white-transparent rounded-lg"
+    >
+      <div class="text-sm my-3 ml-5">Keyboard layout</div>
+      <div
+        class="flex border-2 border-white duration-500 rounded flex-row hover:bg-white-dark-transparent"
+      >
+        <div><p class="text-[0.8rem] text-center px-4 pt-1">ENG</p></div>
+        <div class="py-1 pr-32">
+          <p class="text-[0.9rem]">English (United Kingdom)</p>
+          <p class="text-[0.75rem]">United States-International</p>
+        </div>
+      </div>
+      <div
+        class="flex rounded flex-row duration-500 hover:bg-white-dark-transparent"
+      >
+        <div><p class="text-[0.8rem] text-center px-4 pt-1">ENG</p></div>
+        <div class="py-1 pr-32">
+          <p class="text-[0.9rem]">English (India)</p>
+          <p class="text-[0.75rem]">English (India)</p>
+        </div>
+      </div>
+      <div class="bg-black-dark-transparent text-[0.75rem] py-4">
+        <p class="ml-5">More keyboard settings</p>
+      </div>
+    </div>
+
+    <!-- Notifications -->
+    <div
+      id="notificationbar"
+      class="select-none absolute duration-300 ease-in-out -right-80 bottom-16 text-white rounded-lg backdrop-blur-sm"
+    >
+      <div
+        class="bg-white-dark-transparent items-center py-3 rounded-t-lg pl-5 justify-between flex flex-row"
+      >
+        <p class="text-sm">Notification</p>
+        <p
+          class="font-semibold tracking-tight mx-5 text-[0.75rem] duration-500 bg-white-transparent hover:bg-slate-400 p-1 rounded"
+        >
+          Clear all
+        </p>
+      </div>
+      <p class="bg-white-transparent text-[0.9rem] pl-5 pr-20 pt-3">
+        Developer
+      </p>
+      <p
+        class="bg-white-transparent text-[0.8rem] pl-5 pr-20 pb-3 rounded-b-lg"
+      >
+        Click around and explore yourself 😏
+      </p>
+    </div>
+  </body>
+  <script src="./main.js"></script>
+</html>
